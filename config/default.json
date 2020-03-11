@@ -1,0 +1,5 @@
+{
+    "port":3000,
+    "mongoDBUri":"mongodb+srv://wudeUser:Qwer1234!@cluster0-fdjpd.azure.mongodb.net/wudeapp?retryWrites=true&w=majority",
+    "secretJWTKey":"hardToHandle!@#"
+}
