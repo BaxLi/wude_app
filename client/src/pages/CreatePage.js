@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const CreatePage=()=>{
-    <div>
+   return( <div>
         CreatePage
-    </div>
+    </div>)
 }

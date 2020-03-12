@@ -5,7 +5,11 @@ const mongo=require('mongoose')
 const app=express() // this start server-side app
 const PORT=config.get('port')||5000
 
+// @ts-ignore
+app.use( express.json({extended:true}) )
+
 app.use('/api/auth',require('./routes/auth.routes'))
+
 
 //let connect to DB
 async function connectedToDB(){

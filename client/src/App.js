@@ -1,14 +1,19 @@
 import React from 'react'
+import{BrowserRouter} from 'react-router-dom'
 
 import 'materialize-css'
 import { HeaderMenu } from './components/HeaderMenu'
+import { useRoutes } from './routes'
 
 function App() {
+  const routes=useRoutes()
   return (
-    <div className="container">
-      <HeaderMenu />
-      <h1>TEST Client</h1>
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <HeaderMenu />
+        {routes}
+      </div>
+    </BrowserRouter>
   )
 }
 

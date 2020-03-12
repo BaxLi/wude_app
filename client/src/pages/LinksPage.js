@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const LinksPage=()=>{
-    <div>
+    return(<div>
         LinksPage
-    </div>
+    </div>)
 }
