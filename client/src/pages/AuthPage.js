@@ -35,7 +35,6 @@ export const AuthPage = () => {
 // if isAutenticated
     try {
      const data = await request('/api/auth/login', 'POST', { ...form } )
-     // @ts-ignore
      login(data.token, data.userId)
 
      console.log(data.message);

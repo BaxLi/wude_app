@@ -4,12 +4,10 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import {StartPage} from './pages/StartPage'
 import {LinksPage} from './pages/LinksPage'
 import {AuthPage} from './pages/AuthPage'
-import {CreatePage} from './pages/CreatePage'
+import {TakePhoto} from './pages/TakePhoto'
 import {DetailsPage} from './pages/DetailsPage'
 
-
 export const useRoutes=(isAutenticated=false)=>{
-
     if (isAutenticated) {
        return (
          <Switch>
@@ -19,8 +17,8 @@ export const useRoutes=(isAutenticated=false)=>{
            <Route path="/links" exact>
              <LinksPage />
            </Route>
-           <Route path="/create" exact>
-             <CreatePage />
+           <Route path="/takePhoto" exact>
+             <TakePhoto />
            </Route>
            <Route path="/detail/:id">
              <DetailsPage />

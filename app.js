@@ -1,15 +1,17 @@
 const express=require('express')
 const config=require('config')
 const mongo=require('mongoose')
+// var bodyParser = require('body-parser')
 
 const app=express() // this start server-side app
 const PORT=config.get('port')||5000
 
 // @ts-ignore
 app.use( express.json({extended:true}) )
+app.use('/public/images/',express.static('./public/images'));
 
 app.use('/api/auth',require('./routes/auth.routes'))
-
+app.use('/photo',require('./routes/filesOnServer.routes'))
 
 //let connect to DB
 async function connectedToDB(){

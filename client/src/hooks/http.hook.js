@@ -4,9 +4,7 @@ export const useHttp = () => {
   const [err, seterr] = useState(null)
 
   const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
-
     // console.log("front - http.hook - url=", url);
-
     setloading(true)
     try {
       
@@ -14,7 +12,6 @@ export const useHttp = () => {
         body=JSON.stringify(body)
         headers['content-type']='application/json'
       }
-
       const resp = await fetch(url, {
         method,
         body,
@@ -22,9 +19,7 @@ export const useHttp = () => {
       })
 
       const data = await resp.json()
-
-console.log("fetched data=", data)
-
+      // console.log("fetched data=", data)
       setloading(false)
       if (!resp.ok) {
         seterr(data.message)

@@ -8,8 +8,8 @@ export const useAuth=()=>{
    const login=useCallback((jwtToken, id)=>{
       settoken(jwtToken)
       setuserId(id)
-      localStorage.setItem(storageName, JSON.stringify({userId, token}))
-   },[userId, token])
+      localStorage.setItem(storageName, JSON.stringify({userId:id, token:jwtToken}))
+   },[])
    const logout=useCallback(()=>{
       settoken(null)
       setuserId(null)

@@ -21,7 +21,6 @@ router.post(
   async (req, res) => {
     try {
       console.log("try to register ->",req.body)
-      
       //here we make pre-validation of input ifo at BACK_end side - this is middleware level - came fromn 1x
       const err = validationResult(req)
       if (!err.isEmpty()) {
@@ -96,7 +95,8 @@ router.post(
             config.get('secretJWTKey'),
             {expiresIn:'1h'}    
             )
-        
+        // console.log("token-",token);
+        // console.log("id=", candidateToLogin._id);
             res.json({token, userId:candidateToLogin._id})
   
        

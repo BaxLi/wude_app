@@ -6,16 +6,17 @@ import {HeaderMenu} from './components/HeaderMenu'
 import { useRoutes } from './routes'
 import { useAuth } from './hooks/auth.hooks'
 import {AuthContext} from './context/auth.context'
+import Test from './components/TEST/Test'
 
 function App() {
   const {token, login, logout, userId}=useAuth()
   const isAutenticated=!!token
-  // console.log("app token=", token);
-  
-  const routes=useRoutes(isAutenticated) // DEVELOPMENT ONLY - > CHANGE TO isAutenticated for production 
+  const routes=useRoutes(true) // DEVELOPMENT ONLY - > CHANGE TO isAutenticated for production 
   return (
     <AuthContext.Provider value={{token, login, logout, userId, isAutenticated}}>
+      <Test />
       <BrowserRouter>
+
         <div className="container">
           <HeaderMenu />
           {routes}

@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "server": "nodemon app.js",
-    "client":"npm run start --prefix client",
-    "dev":"concurrently \"npm run server\" \"npm run client\" "
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [
     "wude",
@@ -21,8 +21,11 @@
     "config": "^3.3.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
+    "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.4"
+    "mdbreact": "^4.25.3",
+    "mongoose": "^5.9.4",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
