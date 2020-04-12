@@ -52,30 +52,30 @@ router.post('/uploadPhoto', upload.single('photo'), async (req, res) => {
   }
 })
 router.get('/takePhoto', async (req, res) => {
-  console.log('take photo')
+  // console.log('take photo')
   res.redirect('/')
 })
 
 router.get('/takePhoto/:id', async (req, res, next) => {
-  console.log('Take photo ID')
+  // console.log('Take photo ID=',req.params.id)
   try {
     //first check if file exist in server uploadPhoto dir 
     //  const filePath=`${process.cwd()}\\public\\images`
      const filePath=`./public/images`
     // console.log("filepath=", filePath);
     const fileName = `${filePath}/${req.params.id}`.trim() + '.jpg'
-    console.log('FILENAME=', fileName)
+    // console.log('FILENAME=', fileName)
     let checkIfFileExist=false
       fs.access(fileName, err=>{
       
         if (!err) {
-          console.log("File Exist err=", err)
+          // console.log("File Exist err=", err)
           // res.sendStatus(200).json({status:"ok"})
           res.send({userId:req.params.id})
         }
         else 
         {
-          console.log("File DONT Exist err=", err)
+          // console.log("File DONT Exist err=", err)
           res.send({userId:0})
         }
 

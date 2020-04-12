@@ -1,5 +1,7 @@
 {
     "port":5000,
-    "mongoDBUri":"mongodb+srv://wudeUser:Qwer1234!@cluster0-fdjpd.azure.mongodb.net/wudeapp?retryWrites=true&w=majority",
-    "secretJWTKey":"hardToHandle!@#"
+    "mongoDBUri":"mongodb+srv://wudeUser:Qwer1234!@cluster0-fdjpd.azure.mongodb.net/wudeapp",
+    "secretJWTKey":"hardToHandle!@#",
+    "savedvalue": "mongoDBUri:mongodb+srv://wudeUser:Qwer1234!@cluster0-fdjpd.azure.mongodb.net/wudeapp?retryWrites=true&w=majority",
+   "achievements":["novice", "panda","panda mica","panda mare","panda junior", "tigru mic", "tigru mare", "tiger"]
 }

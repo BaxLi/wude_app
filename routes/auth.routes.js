@@ -7,10 +7,8 @@ const config=require('config')
 const router = Router()
 const User = require('../models/User')
 
-
 // NEW USER REGISTRATION, already have std prefix-> /api/auth -so final route /api/auth/register
-router.post(
-  '/register',
+router.post('/register',
   [
     // 1x here we make pre-validation of input ifo at BACK_end side - this is middleware level
     check('email', 'incorrect email').isEmail(),
@@ -58,8 +56,7 @@ router.post(
 )
 
 // LOGIN, already have std prefix-> /api/auth -so final route /api/auth/login
-router.post(
-    '/login',
+router.post('/login',
     [
       // 1x here we make pre-validation of input ifo at BACK_end side - this is middleware level
       check('email', 'incorrect email').normalizeEmail().isEmail(),
@@ -79,7 +76,10 @@ router.post(
 
         console.log("try to login ->",req.body)
 
-        const candidateToLogin = await User.findOne({ email })
+        const candidateToLogin =await User.findOne({email:email }).populate("style")
+
+        // console.log("candidateToLogin", candidateToLogin)
+
         if (!candidateToLogin) {
           return res.status(400).json({ message: 'incorrecd data type-1 !!!' })
         } 
@@ -95,10 +95,30 @@ router.post(
             config.get('secretJWTKey'),
             {expiresIn:'1h'}    
             )
-        // console.log("token-",token);
-        // console.log("id=", candidateToLogin._id);
-            res.json({token, userId:candidateToLogin._id})
-  
+
+         req.session.user=candidateToLogin
+         req.session.isUser=true
+         if (candidateToLogin.dbrole==='admin') 
+          {
+            req.session.isAdmin=true
+          }
+         req.session.save((er)=>{
+           if (er) {
+           console.log("Erros at session saved !", er)
+           req.session.destroy()
+           userId=null
+           userDetails={}
+           } else {
+            //  console.log("session created ");  
+           }
+         })
+        const finalUser= {...candidateToLogin._doc, password:''}
+        if (finalUser.dbrole=='admin') Object.assign( finalUser,{'isAdmin':true})
+        
+        delete finalUser.dbrole
+        delete finalUser.password
+
+        res.json({token, userId:candidateToLogin._id, userDetails:finalUser})
        
   } catch (error) {
     console.log('module auth.routes LOGIN error')

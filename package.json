@@ -2,10 +2,10 @@
   "name": "wude_app",
   "version": "1.0.0",
   "description": "Clubul sportiv WUDE - aplicatia server-side",
-  "main": "app.js",
+  "main": "serverApp.js",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node serverApp.js",
+    "server": "nodemon serverApp.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
@@ -20,11 +20,12 @@
     "bcryptjs": "^2.4.3",
     "config": "^3.3.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mdbreact": "^4.25.3",
-    "mongoose": "^5.9.4",
+    "mongoose": "^5.9.5",
     "multer": "^1.4.2"
   },
   "devDependencies": {

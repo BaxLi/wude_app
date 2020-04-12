@@ -1,9 +1,12 @@
-import {useCallback} from 'react'
+import React,{useCallback, useState} from 'react'
+import Alert from 'react-bootstrap/Alert'
 
 export const useMessage = () => {
+  // const [show, setShow] = useState(true);
+ 
   return useCallback(text => {
-    if (window.M && text) {
-      window.M.toast({ html: text })
-    }
-  }, [])
+     return (<Alert variant="danger" dismissible>
+        <Alert.Heading> You got an error!</Alert.Heading>
+        <p>{text}</p>
+      </Alert>)}, [])
 }

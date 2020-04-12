@@ -1,4 +1,3 @@
-@import "~materialize-css/dist/css/materialize.min.css";
 
 input.yellow-input {
     border-bottom: 2px solid #efefef !important;
@@ -16,4 +15,8 @@ input.yellow-input:focus{
 
 input.yellow-input:focus + label {
     color: #1de61d !important;
+}
+.achievements {
+    color: #e61d1d;
+    max-height: fit-content;
 }
