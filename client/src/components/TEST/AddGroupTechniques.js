@@ -1,20 +1,19 @@
 import React, { useState, useContext } from 'react'
-// import { Link } from 'react-router-dom'
 import Loader from '../Loader'
 import { Button } from 'react-bootstrap'
-import { useAdmin } from '../../hooks/admin.hooks'
 import { AdminContext } from '../../context/admin.context'
-export const AddTechniques = user => {
+export const AddGroupTechniques = () => {
 
     const {addTechnique, loading} =useContext(AdminContext)
-    const [form, setform] = useState({name: '', levelsname:'', levels:[]})
+    const [form, setform] = useState({name: '', addto:'group'})
        
     const changeHandler = event => {
       setform({ ...form, [event.target.name]: event.target.value })
     }
     const addTechniqueHandler=()=>{
   //split strin by comma or space
-        addTechnique({name:form.name})
+        addTechnique({...form})
+        setform({...form, name:''}) // clear form input prev values 
     }
 
     if (loading) return <Loader />
@@ -27,12 +26,13 @@ export const AddTechniques = user => {
             type="text"
             className="yellow-input"
             placeholder="Please enter new achievement name"
+            value={form.name}
             onChange={changeHandler}
           />
           <label htmlFor="name">Technique name</label>
-        </div>
+      </div>
         <Button variant="warning" onClick={addTechniqueHandler}>
-          New Technique
+          New Technique group
         </Button>
       </div>
     )

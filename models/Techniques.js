@@ -1,8 +1,8 @@
-const { Schema, model, Types } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
-const schema = new Schema({
-name:{type:String, default:"need to be edited",required: true},
-excersizes:[{type:Types.ObjectId,ref:'Excersizes', required:true, default:[]}]
+const exc = new Schema({
+  name: { type: String, required: true, default: 'need to be edited' },
+  group: { type: Schema.Types.ObjectId, ref: 'GroupOfTechniques', required: true }
 })
 
-module.exports = model('Techniques', schema)
+module.exports = model('Techniques', exc)

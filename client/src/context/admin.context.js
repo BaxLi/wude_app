@@ -5,5 +5,7 @@ export const AdminContext=createContext({
     isAutenticated:false,
     userDetails:{},
     styles:[],
-    techniques:[]
+    techniques:[],
+    groupsOfTechniques:[],
+    users:[]
 })

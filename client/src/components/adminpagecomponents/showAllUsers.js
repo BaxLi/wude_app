@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import { useUsers } from '../../hooks/users.hook'
+import React, { useState, useContext } from 'react'
 import { Spinner, Table } from 'react-bootstrap'
 
 import { ShowSingleUser } from '../adminpagecomponents/Show_SingleUser'
 import { StyleAdminModal } from '../../pages/Modals/StyleAdminModal'
+import { AdminContext } from '../../context/admin.context'
 export const ShowAllUsers = () => {
-  const { users, loadingUsers } = useUsers()
+  const {users, loading} = useContext(AdminContext)
   const [show, setShow] = useState(false)
   const [userToEdit, setUserToEdit] = useState(null)
 
-  console.log('ShowAllUsers -> userToEdit', userToEdit)
-
-  if (loadingUsers) {
+  // console.log('ShowAllUsers -> userToEdit', userToEdit, loading)
+if (userToEdit===null) return <Spinner />
+  if (loading) {
     // console.log('Spinner - ShowAllUsers')
     return <Spinner animation="border" variant="danger" />
   } else {

@@ -5,10 +5,10 @@ import {useAdmin} from '../../hooks/admin.hooks'
 import { ShowSingleTechnique } from './ShowSingleTechnique'
 
 export const ShowUserTechniques = user => {
-const { techniques, loading }=useAdmin()
+const { groupsOfTechniques, loading }=useAdmin()
 
   if (loading) return <Loader />
-  const rez = techniques.map(a => 
+  const rez = groupsOfTechniques.map(a => 
         {return (<ListGroup.Item key={a._id} variant="warning">
                     <ShowSingleTechnique  technique={a} />
                   </ListGroup.Item>)}

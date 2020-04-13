@@ -2,21 +2,17 @@ import React, { useContext } from 'react'
 import { Modal, Button, Image, Table } from 'react-bootstrap'
 import { AuthContext } from '../../context/auth.context'
 import { AddDropDownButton } from './AddDropDown'
-import { useUsers } from '../../hooks/users.hook'
 
 export const StyleAdminModal = ({ show, setShow, editingUser }) => {
-  const { styles } = useContext(AuthContext)
-  const {updateUser}=useUsers()
-  
+  const {  updateUser } = useContext(AuthContext)
+  const styles=[]
+
   const udateStyleHandler=(styleFull)=>{
-    
     const updUser={...editingUser, style:[...editingUser.style, styleFull._id]}
     console.log("udateStyleHandler -> updUser", updUser)
     updateUser(updUser)
   }
-
   if (!show) return null
-
   const userStylesMap = styles.filter(item=>{
     if  (editingUser.style.includes(item._id.toString())) return true
    })
